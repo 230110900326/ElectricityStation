@@ -576,45 +576,7 @@
           </button>
         </div>
         
-        <!-- 绿证与碳配额 -->
-        <div class="bg-white rounded-xl shadow-soft p-5 card-hover fade-in">
-          <div class="flex items-center justify-between mb-4">
-            <h2 class="text-lg font-semibold flex items-center">
-              <i class="fa fa-leaf text-primary mr-2"></i>绿证与碳配额管理
-            </h2>
-            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">可交易</span>
-          </div>
-          
-          <p class="text-gray-600 text-sm mb-4">
-            管理绿色电力证书和碳排放配额，跟踪市场价格波动，优化交易时机，实现额外收益。
-          </p>
-          
-          <div class="space-y-4 mb-4">
-            <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
-              <div>
-                <p class="text-sm">绿色电力证书</p>
-                <p class="text-xs text-gray-500">剩余 1,256 张</p>
-              </div>
-              <span class="text-primary font-medium">¥180/张</span>
-            </div>
-            
-            <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
-              <div>
-                <p class="text-sm">碳排放配额</p>
-                <p class="text-xs text-gray-500">剩余 8,742 吨</p>
-              </div>
-              <span class="text-primary font-medium">¥62/吨</span>
-            </div>
-          </div>
-          
-          <div class="h-48 chart-container" style="height: 200px;">
-            <canvas id="revenue-carbon-market-chart"></canvas>
-          </div>
-          
-          <button class="w-full mt-4 bg-green-500 hover:bg-green-600 text-white py-2 rounded-lg transition-all text-sm flex items-center justify-center">
-            <i class="fa fa-line-chart mr-1"></i> 查看市场行情
-          </button>
-        </div>
+        
         
         <!-- 收益权标定 -->
         <div class="bg-white rounded-xl shadow-soft p-5 card-hover fade-in">
@@ -770,7 +732,7 @@
               <div class="timeline-item pb-2">
                 <div class="flex justify-between mb-1">
                   <h4 class="font-medium">权属文件公证</h4>
-                  <span class="text-xs text-gray-500">2023-06-25</span>
+                  <span class="text-xs text-gray-500">2025-06-25</span>
                 </div>
                 <p class="text-sm text-gray-600">所有权属证明文件经公证处公证，确认法律效力</p>
                 <div class="mt-2 flex items-center text-xs text-success">
@@ -782,7 +744,7 @@
               <div class="timeline-item pb-2">
                 <div class="flex justify-between mb-1">
                   <h4 class="font-medium">区块链存证</h4>
-                  <span class="text-xs text-gray-500">2023-06-28</span>
+                  <span class="text-xs text-gray-500">2025-06-28</span>
                 </div>
                 <p class="text-sm text-gray-600">将所有确权文件与评估结果上传至区块链，生成唯一存证ID</p>
                 <div class="mt-2 flex items-center text-xs text-success">
@@ -794,7 +756,7 @@
               <div class="timeline-item">
                 <div class="flex justify-between mb-1">
                   <h4 class="font-medium">定期存证更新</h4>
-                  <span class="text-xs text-blue-500">计划 2023-07-28</span>
+                  <span class="text-xs text-blue-500">计划 2025-11-21</span>
                 </div>
                 <p class="text-sm text-gray-600">每月自动更新发电量与收益数据，保持存证信息时效性</p>
                 <div class="mt-2 flex items-center text-xs text-blue-500">
@@ -1149,17 +1111,17 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div class="bg-gray-50 p-4 rounded-lg">
                 <p class="text-sm text-gray-500 mb-1">第一年预期收益</p>
-                <p class="text-xl font-bold text-primary">¥6,564,337.43</p>
+                <p class="text-xl font-bold text-primary">¥5476337.43</p>
                 <p class="text-xs text-gray-500">年化收益率: 8.75%</p>
               </div>
               <div class="bg-gray-50 p-4 rounded-lg">
                 <p class="text-sm text-gray-500 mb-1">第二年预期收益</p>
-                <p class="text-xl font-bold text-primary">¥6,531,515.75</p>
+                <p class="text-xl font-bold text-primary">¥5436075.75</p>
                 <p class="text-xs text-gray-500">年化收益率: 9.01%</p>
               </div>
               <div class="bg-gray-50 p-4 rounded-lg">
                 <p class="text-sm text-gray-500 mb-1">第三年预期收益</p>
-                <p class="text-xl font-bold text-primary">¥6,498,858.17</p>
+                <p class="text-xl font-bold text-primary">¥5395754.97</p>
                 <p class="text-xs text-gray-500">年化收益率: 9.28%</p>
               </div>
             </div>
@@ -1512,7 +1474,7 @@
   <!-- 页脚 -->
   <footer class="bg-white border-t border-gray-200 mt-8 py-6">
     <div class="container mx-auto px-4 text-center text-gray-500 text-sm">
-      <p>© 2023 新能源综合管理平台</p>
+      <p>© 2025 新能源综合管理平台</p>
       <p class="mt-1">总装机容量: 6000kW | 年预期收益: ¥6,564,337.43 | 资产估值: ¥21,000,000</p>
     </div>
   </footer>
@@ -1980,10 +1942,10 @@
         options: {
           responsive: true,
           maintainAspectRatio: false,
-          scales: { y: { title: { display: true, text: '收益 (元)' } } }
+          scales: { y: { title: { display: true, text: '金额 (元)' } } }
         }
       });
-      
+    }
       // 峰谷套利图表
       const peakCtx = document.getElementById('revenue-peak-valley-chart').getContext('2d');
       const peakData = generatePeakValleyData();
@@ -2026,45 +1988,6 @@
           }
         }
       });
-      
-      // 碳市场图表
-      const carbonCtx = document.getElementById('revenue-carbon-market-chart').getContext('2d');
-      const carbonData = generateCarbonMarketData();
-      
-      appState.charts.revenueCarbonMarketChart = new Chart(carbonCtx, {
-        type: 'line',
-        data: {
-          labels: carbonData.days,
-          datasets: [
-            {
-              label: '绿证价格 (元/张)',
-              data: carbonData.greenCertPrices,
-              borderColor: '#52C41A',
-              backgroundColor: 'transparent',
-              tension: 0.4,
-              yAxisID: 'y'
-            },
-            {
-              label: '碳配额价格 (元/吨)',
-              data: carbonData.carbonPrices,
-              borderColor: '#165DFF',
-              backgroundColor: 'transparent',
-              tension: 0.4,
-              yAxisID: 'y1'
-            }
-          ]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          scales: {
-            y: { title: { display: true, text: '绿证价格 (元)' }, beginAtZero: false },
-            y1: { position: 'right', title: { display: true, text: '碳价 (元)' }, beginAtZero: false, grid: { display: false } }
-          }
-        }
-      });
-    }
-    
     function refreshRevenueCharts() {
       if (!appState.charts.revenueTrendChart) return;
       
@@ -2346,17 +2269,29 @@
           labels: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
           datasets: [{
             label: '月度认购金额 (亿元)',
-            data: [1.2, 1.5, 2.1, 2.8, 3.2, 3.8, 4.2, 4.5, 4.8, 5.2, 5.5, 5.8],
+            data: [2.1, 2.3, 2.4, 2.5, 2.7, 2.8, 3.2, 3.6, 4.0, 4.2, 4.4, 4.6],
             borderColor: '#22C55E',
             backgroundColor: 'rgba(34, 197, 94, 0.1)',
-            tension: 0.4,
+            tension: 0.7,
             fill: true
           }]
         },
         options: {
           responsive: true,
           maintainAspectRatio: false,
-          scales: { y: { title: { display: true, text: '认购金额 (亿元)' } } }
+          scales: { 
+            y: { 
+              title: { 
+                display: true, 
+                text: '认购金额 (亿元)' 
+              } ,
+              min: 1.5,
+              max: 5.5,
+              ticks: {
+                stepSize: 0.5
+              } 
+            } 
+          }
         }
       });
     }
@@ -2373,7 +2308,7 @@
     
     // 生成ABS发行趋势数据
     function generateAbsIssuanceTrendData() {
-      const quarters = ['Q1 2022', 'Q2 2022', 'Q3 2022', 'Q4 2022', 'Q1 2023', 'Q2 2023', 'Q3 2023', 'Q4 2023'];
+      const quarters = ['Q4 2023', 'Q1 2024', 'Q2 2024', 'Q3 2024', 'Q4 2024', 'Q1 2025', 'Q2 2025', 'Q3 2025'];
       const issuanceVolume = [];
       const productCount = [];
       
@@ -2391,7 +2326,7 @@
       return { quarters, issuanceVolume, productCount };
     }
 
-    // 模拟ABS产品认购进度更新
+    // 模拟产品认购进度更新
     function simulateSubscriptionProgress() {
       // 产品1进度更新（68% → 最多95%）
       const progress1 = parseInt(document.getElementById('abs-progress-1').textContent);
