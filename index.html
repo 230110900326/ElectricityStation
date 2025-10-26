@@ -137,7 +137,9 @@
         to { opacity: 1; transform: translateY(0); }
       }
     }
-    
+    .valuation-value {
+        margin-bottom: 16px; 
+    }
   </style>
   
 </head>
@@ -523,7 +525,7 @@
             <p class="text-sm text-blue-600 mb-1">摊销前利润 (本年)</p>
             <p class="text-2xl font-bold text-blue-800" id="revenue-total">¥6,564,337.43</p>
             <p class="text-xs text-green-600 mt-1 flex items-center">
-              <i class="fa fa-arrow-up mr-1"></i> 较上一年增长 0.50%
+              <i class="fa fa-arrow-down mr-1"></i> 较上一年下降 0.49%
             </p>
           </div>
           
@@ -531,7 +533,7 @@
             <p class="text-sm text-green-600 mb-1">年摊销额</p>
             <p class="text-2xl font-bold text-green-800" id="revenue-peak-valley">¥840,000.00</p>
             <p class="text-xs text-green-600 mt-1 flex items-center">
-              <i class="fa fa-arrow-up mr-1"></i> 占比 12.80%
+              <i class="fa fa-arrow-up mr-1"></i> 占比增长 0.06%
             </p>
           </div>
           
@@ -539,7 +541,7 @@
             <p class="text-sm text-purple-600 mb-1">年度维护费用</p>
             <p class="text-2xl font-bold text-purple-800" id="revenue-green">¥248,000.00</p>
             <p class="text-xs text-green-600 mt-1 flex items-center">
-              <i class="fa fa-arrow-up mr-1"></i> 占比 3.78%
+              <i class="fa fa-arrow-up mr-1"></i> 占比增长 0.13%
             </p>
           </div>
           
@@ -547,7 +549,7 @@
             <p class="text-sm text-amber-600 mb-1">净利润 (本年)</p>
             <p class="text-2xl font-bold text-amber-800" id="revenue-asset-value">¥5,476,337.43</p>
             <p class="text-xs text-green-600 mt-1 flex items-center">
-              <i class="fa fa-arrow-up mr-1"></i> 较上一年增长 0.74%
+              <i class="fa fa-arrow-down r-1"></i> 较上一年下降 0.74%
             </p>
           </div>
         </div>
@@ -558,99 +560,87 @@
       </div>
       
       <!-- 核心功能区 -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-        <!-- 峰谷套利 -->
-        <div class="bg-white rounded-xl shadow-soft p-5 card-hover fade-in">
-          <div class="flex items-center justify-between mb-4">
-            <h2 class="text-lg font-semibold flex items-center">
-              <i class="fa fa-exchange text-primary mr-2"></i>峰谷套利策略
-            </h2>
-            <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">优化中</span>
-          </div>
-          
-          <p class="text-gray-600 text-sm mb-4">
-            根据电价峰谷时段差异，结合发电预测，制定最优上网策略，最大化售电收益。
-          </p>
-          
-          <div class="space-y-3 mb-4">
-            <div>
-              <div class="flex justify-between text-xs mb-1">
-                <span>当前策略执行率</span>
-                <span class="font-medium">92%</span>
-              </div>
-              <div class="w-full bg-gray-200 rounded-full h-2">
-                <div class="bg-primary h-2 rounded-full" style="width: 92%"></div>
-              </div>
-            </div>
-            
-            <div>
-              <div class="flex justify-between text-xs mb-1">
-                <span>本月套利效率</span>
-                <span class="font-medium">87%</span>
-              </div>
-              <div class="w-full bg-gray-200 rounded-full h-2">
-                <div class="bg-primary h-2 rounded-full" style="width: 87%"></div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="h-48 chart-container" style="height: 200px;">
-            <canvas id="revenue-peak-valley-chart"></canvas>
-          </div>
-          
-          <button class="w-full mt-4 bg-gray-100 hover:bg-gray-200 text-dark py-2 rounded-lg transition-all text-sm flex items-center justify-center">
-            <i class="fa fa-cog mr-1"></i> 调整套利策略
-          </button>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+  <!-- 峰谷套利策略 -->
+  <div class="bg-white rounded-xl shadow-soft p-5 card-hover fade-in flex flex-col"> <!-- 添加 flex flex-col -->
+    <div class="flex items-center justify-between mb-4">
+      <h2 class="text-lg font-semibold flex items-center">
+        <i class="fa fa-exchange text-primary mr-2"></i>峰谷套利策略
+      </h2>
+      <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">优化中</span>
+    </div>
+    
+    <p class="text-gray-600 text-sm mb-6">
+      根据电价峰谷时段差异，结合发电预测，制定最优上网策略，最大化售电收益。
+    </p>
+    
+    <!-- 进度条部分 -->
+    <div class="space-y-6 mb-6">
+      <div>
+        <div class="flex justify-between text-base mb-2">
+          <span class="font-medium">当前策略执行率</span>
+          <span class="font-bold text-primary">92%</span>
         </div>
-        
-        
-        
-        <!-- 收益权标定 -->
-        <div class="bg-white rounded-xl shadow-soft p-5 card-hover fade-in">
-          <h2 class="text-lg font-semibold mb-4 flex items-center">
-            <i class="fa fa-balance-scale text-primary mr-2"></i>收益权标定
-          </h2>
-          
-          <p class="text-gray-600 text-sm mb-4">
-            结合收益法与成本法，科学评估电力资产收益权价值，为交易和融资提供依据。
-          </p>
-          <div class="space-y-3 mb-5">
-            <div class="p-3 bg-gray-50 rounded-lg">
-              <div class="flex justify-between items-center mb-1">
-                <span class="text-sm">收益法评估值</span>
-                <span class="text-sm font-medium">¥210,000,000</span>
-              </div>
-              <p class="text-xs text-gray-500">基于未来24年收益预测，折现率8%</p>
-            </div>
-            
-            <div class="p-3 bg-gray-50 rounded-lg">
-              <div class="flex justify-between items-center mb-1">
-                <span class="text-sm">成本法评估值</span>
-                <span class="text-sm font-medium">¥124,500,000</span>
-              </div>
-              <p class="text-xs text-gray-500">基于重置成本扣减折旧，成新率78%</p>
-            </div>
-            
-            
-            <div class="p-3 bg-blue-50 rounded-lg border border-blue-100">
-              <div class="flex justify-between items-center">
-                <span class="text-sm font-medium">最终标定价值</span>
-                <span class="text-sm font-bold text-primary">¥54,868,660</span>
-              </div>
-              <p class="text-xs text-gray-500">基于未来24年收益预测，折现率8%</p>
-            </div>
-          </div>
-          
-          <button class="w-full mb-2 bg-primary hover:bg-primary/90 text-white py-2 rounded-lg transition-all text-sm flex items-center justify-center">
-            <i class="fa fa-file-text-o mr-1"></i> 查看评估报告
-          </button>
-          
-          <button class="w-full bg-gray-100 hover:bg-gray-200 text-dark py-2 rounded-lg transition-all text-sm flex items-center justify-center">
-            <i class="fa fa-refresh mr-1"></i> 重新评估
-          </button>
+        <div class="w-full bg-gray-200 rounded-full h-3">
+          <div class="bg-primary h-3 rounded-full" style="width: 92%"></div>
         </div>
       </div>
       
+      <div>
+        <div class="flex justify-between text-base mb-2">
+          <span class="font-medium">本月套利效率</span>
+          <span class="font-bold text-primary">87%</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-3">
+          <div class="bg-primary h-3 rounded-full" style="width: 87%"></div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 按钮部分 - 使用 mt-auto 推到容器底部 -->
+    <div class="mt-auto pt-4"> <!-- 添加 mt-auto 和 pt-4 -->
+      <button class="w-full bg-gray-100 hover:bg-gray-200 text-dark py-3 rounded-lg transition-all text-base flex items-center justify-center">
+        <i class="fa fa-cog mr-2"></i> 调整套利策略
+      </button>
+    </div>
+  </div>
+  
+  <!-- 收益权标定 -->
+  <div class="bg-white rounded-xl shadow-soft p-5 card-hover fade-in flex flex-col"> <!-- 添加 flex flex-col -->
+    <h2 class="text-lg font-semibold mb-4 flex items-center">
+      <i class="fa fa-balance-scale text-primary mr-2"></i>收益权标定
+    </h2>
+    
+    <p class="text-gray-600 text-sm mb-4">
+      结合收益法与成本法，科学评估电力资产收益权价值，为交易和融资提供依据。
+
+    </p>
+    
+    <div class="space-y-3 mb-6">
+      
+      <div class="p-4 bg-blue-50 rounded-lg border-2 border-blue-200">
+        <div class="flex justify-between items-center mb-1">
+          <span class="text-lg font-bold">最终标定价值</span>
+          <span class="text-2xl font-bold text-primary">¥54,868,660</span>
+        </div>
+        <p class="text-xs text-gray-500">基于未来24年收益预测，折现率8%</p>
+      </div>
+    </div>
+    
+    <!-- 按钮部分 - 使用 mt-auto 推到容器底部 -->
+    <div class="mt-auto pt-4"> <!-- 添加 mt-auto 和 pt-4 -->
+      <div class="space-y-2">
+        <button class="w-full bg-primary hover:bg-primary/90 text-white py-3 rounded-lg transition-all text-base flex items-center justify-center">
+          <i class="fa fa-file-text-o mr-2"></i> 查看评估报告
+        </button>
+        
+        <button class="w-full bg-gray-100 hover:bg-gray-200 text-dark py-3 rounded-lg transition-all text-base flex items-center justify-center">
+          <i class="fa fa-refresh mr-2"></i> 重新评估
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
       <!-- 权属确权（区块链上链存证） -->
       <div class="bg-white rounded-xl shadow-soft p-5 mb-6 fade-in">
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
@@ -1100,7 +1090,7 @@
                 </div>
                 <div class="flex justify-between">
                   <span class="text-sm text-gray-600">风险评级</span>
-                  <span class="text-sm font-medium">AA级</span>
+                  <span class="text-sm font-medium">AAA级</span>
                 </div>
                 <div class="flex justify-between">
                   <span class="text-sm text-gray-600">发行状态</span>
@@ -1799,35 +1789,55 @@
         }
       }
       });
-      
-      // 误差分析图表
-      const errorCtx = document.getElementById('forecast-error-chart').getContext('2d');
-      const errorData = generateErrorData();
-      
-      appState.charts.forecastErrorChart = new Chart(errorCtx, {
-        type: 'bar',
-        data: {
-          labels: errorData.categories,
-          datasets: [{
-            label: '平均预测误差 (kWh)',
-            data: errorData.errors,
-            backgroundColor: errorData.errors.map(v => 
-              v < 3 ? 'rgba(54, 207, 201, 0.7)' : v < 6 ? 'rgba(22, 93, 255, 0.7)' : 'rgba(255, 125, 0, 0.7)'
-            ),
-            borderRadius: 4
-          }]
-        },
+    // 误差分析图表
+    const errorData = generateErrorData();
+    const errors = errorData.errors;
+    const categories = errorData.categories;  
+      // 定义高峰时段索引（10:00–18:00）
+const peakIndex = [3,4,5,6,7,8,9]; // 对应 10:00–18:00
+
+// 按高峰与低峰分割数据
+const lowPeakErrors = errors.map((v, i) => peakIndex.includes(i) ? null : v);
+const highPeakErrors = errors.map((v, i) => peakIndex.includes(i) ? v : null);
+
+const errorCtx = document.getElementById('forecast-error-chart').getContext('2d');
+appState.charts.forecastErrorChart = new Chart(errorCtx, {
+  type: 'bar',
+  data: {
+    labels: categories,
+    datasets: [
+      {
+        label: '低峰平均误差 (kWh)',
+        data: lowPeakErrors,
+        backgroundColor: '#5ED3D0', // 蓝绿色
+        borderRadius: 4,
+        barThickness: 15,
+        borderWidth: 0,
+      },
+      {
+        label: '高峰平均误差 (kWh)',
+        data: highPeakErrors,
+        backgroundColor: '#FFA940', // 橙色
+        borderRadius: 4,
+        barThickness: 15,
+        borderWidth: 0,
+      }
+    ]
+  },
         options: {
             responsive: true,
             maintainAspectRatio: false,
             scales: { 
+              x: {
+                stacked: true  //横轴堆叠以居中柱形
+              },
               y: { 
                 beginAtZero: true, 
                 title: { 
                   display: true,
-                   text: '误差 (kWh)' 
+                  text: '电量 (kWh)' 
                 },
-                max: 25, // 根据最大误差值调整Y轴范围
+                max: 30, // 根据最大误差值调整Y轴范围
                 ticks: {
                   stepSize: 5
                 }
@@ -1835,16 +1845,25 @@
             },
             plugins: {
               tooltip: {
-              callbacks: {
-                label: function(context) {
-                    return `平均预测误差: ${context.parsed.y}kWh`;
+                callbacks: {
+                    label: function(context) {
+                    const isPeak = context.dataIndex >= 3 && context.dataIndex < 10;
+                    return `${isPeak ? '高峰' : '低峰'}平均误差: ${context.parsed.x}kWh`;
                   }
-                } 
               }
+            },
+            // 调整布局，确保有足够空间显示标签
+            layout: {
+              padding: {
+                left: 10, // 为左侧标签留出空间
+                right: 10,
+                top: 10,
+                  bottom: 10
+            }
             }
           }
-      });
-      
+        }
+    });
       // 气象因素影响图表
       const factorsCtx = document.getElementById('forecast-factors-chart').getContext('2d');
       const factorsData = generateInfluenceFactors();
@@ -1887,7 +1906,6 @@
         }
       });
     }
-    
     function refreshForecastCharts() {
   if (!appState.charts.forecastMainChart) return;
   
@@ -2000,7 +2018,7 @@ function generateErrorData() {
   ];
   
   // 基于发电量模式分配误差：高峰时段误差较大，夜间误差较小
-  const errorWeights = [0.02, 0.02, 0.02, 0.05, 0.08, 0.15, 0.18, 0.15, 0.12, 0.08, 0.02, 0.01];
+  const errorWeights = [0.005, 0.01, 0.01,0.059, 0.095, 0.178, 0.213, 0.178, 0.142, 0.095, 0.01, 0.005];
   const totalError = 120; // 总误差120kWh
   
   const errors = errorWeights.map(weight => {
@@ -2101,89 +2119,7 @@ function generateErrorData() {
     }
   }
     });
-      // 峰谷套利图表
-      const peakCtx = document.getElementById('revenue-peak-valley-chart').getContext('2d');
-      const peakData = generatePeakValleyData();
-      
-      appState.charts.revenuePeakValleyChart = new Chart(peakCtx, {
-          type: 'bar',
-          data: {
-          labels: ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00', '24:00'],
-          datasets: [
-            {
-              label: '实际发电量 (MW)',
-              data: [40, 30, 50, 65, 55, 70, 45],
-              backgroundColor: 'rgba(224, 224, 224, 0.8)',
-              yAxisID: 'y',
-              borderWidth: 0,
-              borderRadius: 4,
-              order: 1
-            },
-            {
-              label: '优化上网电量 (MW)',
-              data: [35, 25, 48, 60, 52, 68, 40],
-              backgroundColor: 'rgba(22, 93, 255, 0.8)',
-              yAxisID: 'y',
-              borderWidth: 0,
-              borderRadius: 4,
-              order: 2
-            },
-            {
-              label: '电价 (元/kWh)',
-              data: [0.30, 0.28, 0.45, 0.55, 0.50, 0.75, 0.40],
-              type: 'line',
-              yAxisID: 'y1',
-              borderColor: '#FF7D00',
-              backgroundColor: '#FF7D00',
-              tension: 0.3,
-              fill: false,
-              borderWidth: 2.5,
-              pointRadius: 4,
-              pointHoverRadius: 6,
-              order: 999, 
-              elements: {
-                line: { z: 1000 },   
-                point: { z: 1001 }   
-              }
-            }        
-        ]
-      },
-      options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          scales: {
-            y: {
-              beginAtZero: true,
-              max: 80,
-              title: { display: true, text: '电量 (MW)' }
-            },
-            y1: {
-              beginAtZero: true,
-              max: 1.0,
-              position: 'right',
-              title: { display: true, text: '电价 (元/kWh)' },
-              grid: { drawOnChartArea: false }
-            }
-          },
-          plugins: {
-            legend: { position: 'top' },
-            tooltip: {
-              callbacks: {
-                label: function(context) {
-                  const label = context.dataset.label || '';
-                  const value = context.parsed.y;
-                  if (label.includes('电价')) {
-                    return `${label}: ${value.toFixed(2)} 元/kWh`;
-                  } else {
-                    return `${label}: ${value} MW`;
-                  }
-                }
-              }
-            }
-          }
-        }
-      });
-    }  
+  }
     function refreshRevenueCharts() {
         if (!appState.charts.revenueTrendChart) return;
   
@@ -2235,15 +2171,6 @@ function generateRevenueTrendData() {
     greenCert: netProfit
   };
 }
-    // 生成峰谷套利数据
-    function generatePeakValleyData() {
-      const hours = ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00', '24:00'];
-      const prices = [0.30, 0.28, 0.45, 0.55, 0.50, 0.75, 0.40];
-      const generation = [40, 30, 50, 65, 55, 70, 45];
-      const optimized = [35, 25, 48, 60, 52, 68, 40];
-      return { hours, prices, generation, optimized };
-    }
-    
     // 生成碳市场数据
     function generateCarbonMarketData() {
       const days = Array.from({length: 14}, (_, i) => `${i+1}日`);
