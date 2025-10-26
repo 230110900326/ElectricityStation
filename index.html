@@ -143,49 +143,53 @@
 </head>
 <body class="font-inter bg-gray-50 text-dark">
   <!-- 顶部导航栏 - 统一导航 -->
-  <header class="bg-white shadow-sm sticky top-0 z-50 transition-all duration-300">
-    <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
-      <div class="flex items-center space-x-3 mb-4 md:mb-0">
-        <i class="fa fa-bolt text-primary text-2xl"></i>
-        <h1 class="text-[clamp(1.25rem,3vw,1.75rem)] font-bold text-primary">产品综合运行演示平台</h1>
+  <!-- 修改后的顶部导航栏 -->
+<header class="bg-white shadow-sm sticky top-0 z-50 transition-all duration-300">
+  <div class="container mx-auto px-4 py-3 flex flex-row items-center justify-between">
+    <!-- 标题部分 - 占据更多空间 -->
+    <div class="flex items-center space-x-3 min-w-0 flex-1">
+      <i class="fa fa-bolt text-primary text-2xl flex-shrink-0"></i>
+      <h1 class="text-2xl font-bold text-primary truncate">产品综合运行演示平台</h1>
+    </div>
+    
+    <!-- 右侧部分 - 自适应宽度 -->
+    <div class="flex items-center space-x-4 flex-shrink-0 ml-4">
+      <!-- 最后更新时间 -->
+      <div class="flex items-center space-x-2 text-info flex-shrink-0">
+        <i class="fa fa-clock-o" id="global-last-update-icon"></i>
+        <span id="global-last-update" class="whitespace-nowrap">最后更新: 加载中...</span>
       </div>
       
-      <div class="flex items-center space-x-6">
-        <div class="flex items-center space-x-2 text-info">
-          <i class="fa fa-clock-o" id="global-last-update-icon"></i>
-          <span id="global-last-update">最后更新: 加载中...</span>
-        </div>
-        
-        <div class="flex flex-wrap gap-2">
-          <button class="module-btn bg-primary text-white px-4 py-2 rounded-lg transition-all flex items-center space-x-2" data-module="weather">
-            <i class="fa fa-map"></i>
-            <span>气象地图</span>
-          </button>
-          <button class="module-btn bg-gray-100 hover:bg-gray-200 text-dark px-4 py-2 rounded-lg transition-all flex items-center space-x-2" data-module="forecast">
-            <i class="fa fa-bolt"></i>
-            <span>发电预测</span>
-          </button>
-          <button class="module-btn bg-gray-100 hover:bg-gray-200 text-dark px-4 py-2 rounded-lg transition-all flex items-center space-x-2" data-module="revenue">
-            <i class="fa fa-line-chart"></i>
-            <span>电力收益</span>
-          </button>
-          <button class="module-btn bg-gray-100 hover:bg-gray-200 text-dark px-4 py-2 rounded-lg transition-all flex items-center space-x-2" data-module="rwa">
-            <i class="fa fa-cubes"></i>
-            <span>RWA代币化</span>
-          </button>
-          <button class="module-btn bg-gray-100 hover:bg-gray-200 text-dark px-4 py-2 rounded-lg transition-all flex items-center space-x-2" data-module="abs">
-            <i class="fa fa-certificate"></i>
-            <span>绿色ABS</span>
-          </button>
-          <button id="global-refresh-btn" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg transition-all flex items-center space-x-2">
-            <i class="fa fa-refresh"></i>
-            <span>刷新数据</span>
-          </button>
-        </div>
+      <!-- 导航按钮 -->
+      <div class="flex flex-wrap gap-2 justify-end">
+        <button class="module-btn bg-primary text-white px-3 py-1.5 rounded-lg transition-all flex items-center space-x-1 text-sm" data-module="weather">
+          <i class="fa fa-map"></i>
+          <span>气象地图</span>
+        </button>
+        <button class="module-btn bg-gray-100 hover:bg-gray-200 text-dark px-3 py-1.5 rounded-lg transition-all flex items-center space-x-1 text-sm" data-module="forecast">
+          <i class="fa fa-bolt"></i>
+          <span>发电预测</span>
+        </button>
+        <button class="module-btn bg-gray-100 hover:bg-gray-200 text-dark px-3 py-1.5 rounded-lg transition-all flex items-center space-x-1 text-sm" data-module="revenue">
+          <i class="fa fa-line-chart"></i>
+          <span>电力收益</span>
+        </button>
+        <button class="module-btn bg-gray-100 hover:bg-gray-200 text-dark px-3 py-1.5 rounded-lg transition-all flex items-center space-x-1 text-sm" data-module="rwa">
+          <i class="fa fa-cubes"></i>
+          <span>RWA代币化</span>
+        </button>
+        <button class="module-btn bg-gray-100 hover:bg-gray-200 text-dark px-3 py-1.5 rounded-lg transition-all flex items-center space-x-1 text-sm" data-module="abs">
+          <i class="fa fa-certificate"></i>
+          <span>绿色ABS</span>
+        </button>
+        <button id="global-refresh-btn" class="bg-primary hover:bg-primary/90 text-white px-3 py-1.5 rounded-lg transition-all flex items-center space-x-1 text-sm">
+          <i class="fa fa-refresh"></i>
+          <span>刷新数据</span>
+        </button>
       </div>
     </div>
-  </header>
-
+  </div>
+</header>
   <!-- 主要内容区 - 模块容器 -->
   <main class="container mx-auto px-4 py-6">
     <!-- 1. 气象地图模块 -->
@@ -314,75 +318,98 @@
     </section>
 
     <!-- 2. 发电预测模块 -->
-    <section id="forecast-module" class="module-section">
-      <!-- 模型简介和控制区 -->
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-        <!-- 模型简介 -->
-        <div class="bg-white rounded-xl shadow-soft p-5 lg:col-span-2 card-hover fade-in">
-          <h2 class="text-lg font-semibold mb-3 flex items-center">
-            <i class="fa fa-info-circle text-primary mr-2"></i>TS-CNN-PowerForecast 模型介绍
-          </h2>
-          <p class="text-gray-600 mb-4">
-            基于时序卷积神经网络的发电量预测模型，结合气象数据与历史发电数据，实现高精度的短期和中期发电量预测。
-          </p>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
-            <div class="bg-blue-50 p-3 rounded-lg">
-              <p class="text-blue-600 font-medium">预测精度</p>
-              <p class="font-semibold">92.7%</p>
+<section id="forecast-module" class="module-section">
+  <!-- 模型简介和控制区 - 按照图片布局重新设计 -->
+  <div class="grid grid-cols-1 xl:grid-cols-5 gap-8 mb-6"> <!-- 增加间距到 gap-8 -->
+    <!-- 模型介绍 - 占据3/5 -->
+    <div class="bg-white rounded-xl shadow-soft p-6 card-hover fade-in xl:col-span-3">
+      <h2 class="text-xl font-semibold mb-4 flex items-center">
+        <i class="fa fa-info-circle text-primary mr-3"></i>TS-CNN-PowerForecast 模型介绍
+      </h2>
+      <p class="text-gray-600 mb-6 text-base leading-relaxed">
+        基于时序卷积神经网络的发电量预测模型，结合气象数据与历史发电数据，实现高精度的短期和中期发电量预测。
+      </p>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6"> <!-- 增加卡片间距 -->
+        <!-- 预测精度卡片 -->
+        <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-5 rounded-xl border border-blue-200 text-center card-hover">
+          <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-3">
+            <i class="fa fa-check text-white text-xl"></i>
+          </div>
+          <p class="text-blue-600 font-medium text-base mb-2">预测精度</p>
+          <p class="text-2xl font-bold text-blue-800">92.7%</p>
+        </div>
+        
+        <!-- 数据输入卡片 -->
+        <div class="bg-gradient-to-br from-green-50 to-green-100 p-5 rounded-xl border border-green-200 text-center card-hover">
+          <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-3">
+            <i class="fa fa-database text-white text-xl"></i>
+          </div>
+          <p class="text-green-600 font-medium text-base mb-2">数据输入</p>
+          <p class="text-2xl font-bold text-green-800">6种气象特征</p>
+        </div>
+        
+        <!-- 预测范围卡片 -->
+        <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-5 rounded-xl border border-purple-200 text-center card-hover">
+          <div class="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-3">
+            <i class="fa fa-clock-o text-white text-xl"></i>
+          </div>
+          <p class="text-purple-600 font-medium text-base mb-2">预测范围</p>
+          <p class="text-2xl font-bold text-purple-800">1小时-7天</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 预测参数 - 占据2/5 -->
+    <div class="bg-white rounded-xl shadow-soft p-6 card-hover fade-in xl:col-span-2">
+      <h2 class="text-xl font-semibold mb-6 flex items-center">
+        <i class="fa fa-sliders text-primary mr-3"></i>预测参数
+      </h2>
+      
+      <div class="space-y-6"> <!-- 增加表单项间距 -->
+        <!-- 发电厂类型 -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">发电厂类型</label>
+          <select id="forecast-plant-type" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all">
+            <option value="solar">太阳能电站</option>
+          </select>
+        </div>
+        
+        <!-- 预测周期 -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">预测周期</label>
+          <select id="forecast-period" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all">
+            <option value="24h">24小时（短期）</option>
+            <option value="7d" selected>7天（中期）</option>
+            <option value="30d">30天（长期）</option>
+          </select>
+        </div>
+        
+        <!-- 气象数据来源 -->
+        <div>
+          <h3 class="text-sm font-semibold text-gray-700 mb-3 flex items-center">
+            <i class="fa fa-cloud text-primary mr-2 text-xs"></i>气象数据来源
+          </h3>
+          <div class="space-y-3">
+            <div class="flex items-center p-3 bg-gray-50 rounded-lg border border-gray-200">
+              <input type="radio" id="forecast-source-real" name="forecast-data-source" checked class="text-primary mr-3">
+              <label for="forecast-source-real" class="text-gray-800 font-medium">实时气象数据</label>
             </div>
-            <div class="bg-green-50 p-3 rounded-lg">
-              <p class="text-green-600 font-medium">数据输入</p>
-              <p class="font-semibold">6种气象特征</p>
-            </div>
-            <div class="bg-purple-50 p-3 rounded-lg">
-              <p class="text-purple-600 font-medium">预测范围</p>
-              <p class="font-semibold">1小时-7天</p>
+            <div class="flex items-center p-3 bg-gray-50 rounded-lg border border-gray-200">
+              <input type="radio" id="forecast-source-forecast" name="forecast-data-source" class="text-primary mr-3">
+              <label for="forecast-source-forecast" class="text-gray-800">气象预报数据</label>
             </div>
           </div>
         </div>
         
-        <!-- 预测控制 -->
-        <div class="bg-white rounded-xl shadow-soft p-5 lg:col-span-1 card-hover fade-in">
-          <h2 class="text-lg font-semibold mb-4 flex items-center">
-            <i class="fa fa-sliders text-primary mr-2"></i>预测参数
-          </h2>
-          
-          <div class="space-y-4">
-            <div>
-              <label class="block text-sm font-medium text-gray-700 mb-1">发电厂类型</label>
-              <select id="forecast-plant-type" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all">
-                <option value="solar">太阳能电站</option>
-              </select>
-            </div>
-            
-            <div>
-              <label class="block text-sm font-medium text-gray-700 mb-1">预测周期</label>
-              <select id="forecast-period" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all">
-                <option value="24h">24小时（短期）</option>
-                <option value="7d" selected>7天（中期）</option>
-                <option value="30d">30天（长期）</option>
-              </select>
-            </div>
-            
-            <div>
-              <label class="block text-sm font-medium text-gray-700 mb-1">气象数据来源</label>
-              <div class="flex items-center space-x-2">
-                <input type="radio" id="forecast-source-real" name="forecast-data-source" checked class="text-primary">
-                <label for="forecast-source-real" class="text-sm">实时气象数据</label>
-              </div>
-              <div class="flex items-center space-x-2">
-                <input type="radio" id="forecast-source-forecast" name="forecast-data-source" class="text-primary">
-                <label for="forecast-source-forecast" class="text-sm">气象预报数据</label>
-              </div>
-            </div>
-            
-            <button id="forecast-apply-settings" class="w-full bg-primary hover:bg-primary/90 text-white py-2 rounded-lg transition-all flex items-center justify-center space-x-2">
-              <i class="fa fa-check"></i>
-              <span>应用设置</span>
-            </button>
-          </div>
-        </div>
+        <!-- 应用设置按钮 -->
+        <button id="forecast-apply-settings" class="w-full bg-primary hover:bg-primary/90 text-white py-3 rounded-lg transition-all flex items-center justify-center space-x-2 text-base font-medium mt-4">
+          <i class="fa fa-check"></i>
+          <span>应用设置</span>
+        </button>
       </div>
+    </div>
+  </div>
       <!-- 预测结果展示 -->
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
         <!-- 主要预测曲线 -->
@@ -426,7 +453,7 @@
             <div class="metric-card bg-gray-50 p-4 rounded-lg">
               <div class="flex justify-between items-center mb-1">
                 <span class="text-sm text-gray-600">均方根误差 (RMSE)</span>
-                <span class="text-sm font-semibold">161 kW</span>
+                <span class="text-sm font-semibold">161 kWh</span>
               </div>
               <div class="w-full bg-gray-200 rounded-full h-2">
                 <div class="bg-primary h-2 rounded-full" style="width: 15%"></div>
@@ -436,7 +463,7 @@
             <div class="metric-card bg-gray-50 p-4 rounded-lg">
               <div class="flex justify-between items-center mb-1">
                 <span class="text-sm text-gray-600">平均绝对误差 (MAE)</span>
-                <span class="text-sm font-semibold">120 kW</span>
+                <span class="text-sm font-semibold">120 kWh</span>
               </div>
               <div class="w-full bg-gray-200 rounded-full h-2">
                 <div class="bg-primary h-2 rounded-full" style="width: 10%"></div>
@@ -493,34 +520,34 @@
         
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
           <div class="bg-blue-50 p-4 rounded-lg border border-blue-100 card-hover">
-            <p class="text-sm text-blue-600 mb-1">总收益 (本月)</p>
+            <p class="text-sm text-blue-600 mb-1">摊销前利润 (本年)</p>
             <p class="text-2xl font-bold text-blue-800" id="revenue-total">¥6,564,337.43</p>
             <p class="text-xs text-green-600 mt-1 flex items-center">
-              <i class="fa fa-arrow-up mr-1"></i> 较上月增长 8.3%
+              <i class="fa fa-arrow-up mr-1"></i> 较上一年增长 0.50%
             </p>
           </div>
           
           <div class="bg-green-50 p-4 rounded-lg border border-green-100 card-hover">
-            <p class="text-sm text-green-600 mb-1">峰谷套利收益</p>
-            <p class="text-2xl font-bold text-green-800" id="revenue-peak-valley">¥215,300</p>
+            <p class="text-sm text-green-600 mb-1">年摊销额</p>
+            <p class="text-2xl font-bold text-green-800" id="revenue-peak-valley">¥840,000.00</p>
             <p class="text-xs text-green-600 mt-1 flex items-center">
-              <i class="fa fa-arrow-up mr-1"></i> 占比 17.1%
+              <i class="fa fa-arrow-up mr-1"></i> 占比 12.80%
             </p>
           </div>
           
           <div class="bg-purple-50 p-4 rounded-lg border border-purple-100 card-hover">
-            <p class="text-sm text-purple-600 mb-1">绿证与碳配额收益</p>
-            <p class="text-2xl font-bold text-purple-800" id="revenue-green">¥186,500</p>
+            <p class="text-sm text-purple-600 mb-1">年度维护费用</p>
+            <p class="text-2xl font-bold text-purple-800" id="revenue-green">¥248,000.00</p>
             <p class="text-xs text-green-600 mt-1 flex items-center">
-              <i class="fa fa-arrow-up mr-1"></i> 占比 14.8%
+              <i class="fa fa-arrow-up mr-1"></i> 占比 3.78%
             </p>
           </div>
           
           <div class="bg-amber-50 p-4 rounded-lg border border-amber-100 card-hover">
-            <p class="text-sm text-amber-600 mb-1">确权资产估值</p>
-            <p class="text-2xl font-bold text-amber-800" id="revenue-asset-value">¥21,000,000</p>
+            <p class="text-sm text-amber-600 mb-1">净利润 (本年)</p>
+            <p class="text-2xl font-bold text-amber-800" id="revenue-asset-value">¥5,476,337.43</p>
             <p class="text-xs text-green-600 mt-1 flex items-center">
-              <i class="fa fa-arrow-up mr-1"></i> 较年初增长 5.2%
+              <i class="fa fa-arrow-up mr-1"></i> 较上一年增长 0.74%
             </p>
           </div>
         </div>
@@ -531,7 +558,7 @@
       </div>
       
       <!-- 核心功能区 -->
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
         <!-- 峰谷套利 -->
         <div class="bg-white rounded-xl shadow-soft p-5 card-hover fade-in">
           <div class="flex items-center justify-between mb-4">
@@ -587,14 +614,13 @@
           <p class="text-gray-600 text-sm mb-4">
             结合收益法与成本法，科学评估电力资产收益权价值，为交易和融资提供依据。
           </p>
-          
           <div class="space-y-3 mb-5">
             <div class="p-3 bg-gray-50 rounded-lg">
               <div class="flex justify-between items-center mb-1">
                 <span class="text-sm">收益法评估值</span>
                 <span class="text-sm font-medium">¥210,000,000</span>
               </div>
-              <p class="text-xs text-gray-500">基于未来5年收益预测，折现率8%</p>
+              <p class="text-xs text-gray-500">基于未来24年收益预测，折现率8%</p>
             </div>
             
             <div class="p-3 bg-gray-50 rounded-lg">
@@ -605,11 +631,13 @@
               <p class="text-xs text-gray-500">基于重置成本扣减折旧，成新率78%</p>
             </div>
             
+            
             <div class="p-3 bg-blue-50 rounded-lg border border-blue-100">
               <div class="flex justify-between items-center">
                 <span class="text-sm font-medium">最终标定价值</span>
-                <span class="text-sm font-bold text-primary">¥16,725,000</span>
+                <span class="text-sm font-bold text-primary">¥54,868,660</span>
               </div>
+              <p class="text-xs text-gray-500">基于未来24年收益预测，折现率8%</p>
             </div>
           </div>
           
@@ -682,10 +710,7 @@
                   <i class="fa fa-check-circle text-success mt-1 mr-2"></i>
                   <span>收益权评估报告与标定结果</span>
                 </li>
-                <li class="flex items-start">
-                  <i class="fa fa-check-circle text-success mt-1 mr-2"></i>
-                  <span>绿证与碳配额持有证明</span>
-                </li>
+            
                 <li class="flex items-start">
                   <i class="fa fa-check-circle text-success mt-1 mr-2"></i>
                   <span>近12个月发电量与收益记录</span>
@@ -785,33 +810,33 @@
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
           <div class="bg-blue-50 p-4 rounded-lg border border-blue-100 card-hover">
             <p class="text-sm text-blue-600 mb-1">已代币化资产总值</p>
-            <p class="text-2xl font-bold text-blue-800" id="rwa-tokenized-value">¥21,000,000</p>
+            <p class="text-2xl font-bold text-blue-800" id="rwa-tokenized-value">¥22,432,450</p>
             <p class="text-xs text-green-600 mt-1 flex items-center">
-              <i class="fa fa-arrow-up mr-1"></i> 较上月增长 12.3%
+              <i class="fa fa-arrow-up mr-1"></i> 较上季度增长 12.3%
             </p>
           </div>
           
           <div class="bg-purple-50 p-4 rounded-lg border border-purple-100 card-hover">
             <p class="text-sm text-purple-600 mb-1">NFT数字凭证数量</p>
-            <p class="text-2xl font-bold text-purple-800" id="rwa-nft-count">146</p>
+            <p class="text-2xl font-bold text-purple-800" id="rwa-nft-count">1532</p>
             <p class="text-xs text-green-600 mt-1 flex items-center">
-              <i class="fa fa-arrow-up mr-1"></i> 本月新增 12 个
+              <i class="fa fa-arrow-up mr-1"></i> 本季度新增 18 个
             </p>
           </div>
           
           <div class="bg-green-50 p-4 rounded-lg border border-green-100 card-hover">
             <p class="text-sm text-green-600 mb-1">流通中资产Token</p>
-            <p class="text-2xl font-bold text-green-800" id="rwa-circulating-tokens">8,752,400</p>
+            <p class="text-2xl font-bold text-green-800" id="rwa-circulating-tokens">9,104,500</p>
             <p class="text-xs text-green-600 mt-1 flex items-center">
-              <i class="fa fa-arrow-up mr-1"></i> 流通率 78.3%
+              <i class="fa fa-arrow-up mr-1"></i> 流通率 80.5%
             </p>
           </div>
           
           <div class="bg-amber-50 p-4 rounded-lg border border-amber-100 card-hover">
             <p class="text-sm text-amber-600 mb-1">资产包预期年化收益</p>
-            <p class="text-2xl font-bold text-amber-800" id="rwa-expected-return">8.75%</p>
+            <p class="text-2xl font-bold text-amber-800" id="rwa-expected-return">8.62%</p>
             <p class="text-xs text-green-600 mt-1 flex items-center">
-              <i class="fa fa-arrow-up mr-1"></i> 较基准高 2.3%
+              <i class="fa fa-arrow-up mr-1"></i> 较基准高 2.1%
             </p>
           </div>
         </div>
@@ -958,7 +983,7 @@
                   </div>
                   <div>
                     <p class="text-xs text-gray-500">发行时间</p>
-                    <p class="font-medium">2023-03-15</p>
+                    <p class="font-medium">2025-03-15</p>
                   </div>
                   <div>
                     <p class="text-xs text-gray-500">状态</p>
@@ -1037,9 +1062,7 @@
           <div class="flex items-center space-x-3">
             <div class="relative">
               <select id="rwa-asset-package-period" class="appearance-none bg-gray-100 border-0 pl-3 pr-8 py-2 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/50">
-                <option value="1y">1年预测</option>
-                <option value="3y" selected>3年预测</option>
-                <option value="5y">5年预测</option>
+                <option value="1y" selected>杭州航民达美工业光伏电站24年预测</option>
               </select>
               <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
                 <i class="fa fa-chevron-down text-xs"></i>
@@ -1061,19 +1084,19 @@
               <div class="space-y-3 mb-4">
                 <div class="flex justify-between">
                   <span class="text-sm text-gray-600">资产组成</span>
-                  <span class="text-sm font-medium">3个风电场 + 2个光伏电站</span>
+                  <span class="text-sm font-medium">杭州航民达美工业光伏电站</span>
                 </div>
                 <div class="flex justify-between">
                   <span class="text-sm text-gray-600">总装机容量</span>
-                  <span class="text-sm font-medium">150 MW</span>
+                  <span class="text-sm font-medium">6 MW</span>
                 </div>
                 <div class="flex justify-between">
                   <span class="text-sm text-gray-600">打包规模</span>
-                  <span class="text-sm font-medium">¥1.2亿</span>
+                  <span class="text-sm font-medium">¥5486.87万</span>
                 </div>
                 <div class="flex justify-between">
                   <span class="text-sm text-gray-600">预期年化收益</span>
-                  <span class="text-sm font-medium text-green-600">8.75%</span>
+                  <span class="text-sm font-medium text-green-600">8.50%</span>
                 </div>
                 <div class="flex justify-between">
                   <span class="text-sm text-gray-600">风险评级</span>
@@ -1100,29 +1123,27 @@
           
           <!-- 未来收益预测 -->
           <div class="lg:col-span-2">
-            <h3 class="font-medium mb-4">未来3年收益预测与现金流</h3>
+            <h3 class="font-medium mb-4">杭州航民达美工业光伏电站24年收益预测</h3>
             
-            <div class="mb-6">
-              <div class="chart-container">
-                <canvas id="rwa-future-revenue-chart"></canvas>
-              </div>
-            </div>
+            
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div class="bg-gray-50 p-4 rounded-lg">
                 <p class="text-sm text-gray-500 mb-1">第一年预期收益</p>
                 <p class="text-xl font-bold text-primary">¥5476337.43</p>
-                <p class="text-xs text-gray-500">年化收益率: 8.75%</p>
               </div>
               <div class="bg-gray-50 p-4 rounded-lg">
                 <p class="text-sm text-gray-500 mb-1">第二年预期收益</p>
                 <p class="text-xl font-bold text-primary">¥5436075.75</p>
-                <p class="text-xs text-gray-500">年化收益率: 9.01%</p>
               </div>
               <div class="bg-gray-50 p-4 rounded-lg">
                 <p class="text-sm text-gray-500 mb-1">第三年预期收益</p>
                 <p class="text-xl font-bold text-primary">¥5395754.97</p>
-                <p class="text-xs text-gray-500">年化收益率: 9.28%</p>
+              </div>
+            </div>
+            <div class="mb-6">
+              <div class="chart-container" style="margin-top: 20px;">
+                <canvas id="rwa-future-revenue-chart" height="250"></canvas>
               </div>
             </div>
           </div>
@@ -1135,39 +1156,39 @@
       <!-- 绿色ABS发行概览 -->
       <div class="bg-white rounded-xl shadow-soft p-6 mb-6 fade-in">
         <h2 class="text-xl font-semibold mb-6 flex items-center">
-          <i class="fa fa-certificate text-green-600 mr-2"></i>数据驱动型绿色资产证券(ABS)概览
+          <i class="fa fa-certificate text-green-600 mr-2"></i>绿色资产证券(ABS)概览
         </h2>
         
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
           <div class="bg-green-50 p-4 rounded-lg border border-green-100 card-hover">
             <p class="text-sm text-green-600 mb-1">已发行绿色ABS规模</p>
-            <p class="text-2xl font-bold text-green-800" id="abs-issued-value">¥5.28亿</p>
+            <p class="text-2xl font-bold text-green-800" id="abs-issued-value">¥1,773 亿</p>
             <p class="text-xs text-green-600 mt-1 flex items-center">
-              <i class="fa fa-arrow-up mr-1"></i> 本年度增长 35.7%
+              <i class="fa fa-arrow-up mr-1"></i> 本年度同比增长 8.83%
             </p>
           </div>
           
           <div class="bg-blue-50 p-4 rounded-lg border border-blue-100 card-hover">
-            <p class="text-sm text-blue-600 mb-1">在发ABS产品数量</p>
-            <p class="text-2xl font-bold text-blue-800" id="active-abs-count">4</p>
+            <p class="text-sm text-blue-600 mb-1">在发绿色ABS产品规模</p>
+            <p class="text-2xl font-bold text-blue-800" id="active-abs-count">¥144 亿</p>
             <p class="text-xs text-green-600 mt-1 flex items-center">
-              <i class="fa fa-arrow-up mr-1"></i> 本月新增 1 只
+              <i class="fa fa-arrow-up mr-1"></i> 本年度新增 ¥144 亿元
             </p>
           </div>
           
           <div class="bg-purple-50 p-4 rounded-lg border border-purple-100 card-hover">
-            <p class="text-sm text-purple-600 mb-1">累计投资人数量</p>
-            <p class="text-2xl font-bold text-purple-800" id="investor-count">2,845</p>
+            <p class="text-sm text-purple-600 mb-1">已发绿色ABS产品数量</p>
+            <p class="text-2xl font-bold text-purple-800" id="investor-count">152 只</p>
             <p class="text-xs text-green-600 mt-1 flex items-center">
-              <i class="fa fa-arrow-up mr-1"></i> 较上月增长 12.3%
+              <i class="fa fa-arrow-up mr-1"></i> 较上年增长 2.70%
             </p>
           </div>
           
           <div class="bg-amber-50 p-4 rounded-lg border border-amber-100 card-hover">
-            <p class="text-sm text-amber-600 mb-1">平均发行周期</p>
-            <p class="text-2xl font-bold text-amber-800" id="avg-issuance-period">48天</p>
+            <p class="text-sm text-amber-600 mb-1">在发行绿色ABS产品数量</p>
+            <p class="text-2xl font-bold text-amber-800" id="avg-issuance-period">4 只</p>
             <p class="text-xs text-green-600 mt-1 flex items-center">
-              <i class="fa fa-arrow-down mr-1"></i> 较行业平均快 15天
+              <i class="fa fa-arrow-up mr-1"></i> 本年度新增 4 只
             </p>
           </div>
         </div>
@@ -1268,7 +1289,7 @@
               <div class="flex flex-wrap justify-between items-start gap-2 mb-4">
                 <div>
                   <h3 class="font-semibold text-lg">蓝天光伏分布式资产支持证券</h3>
-                  <p class="text-sm text-gray-500 mt-1">优先级 | 期限 1.5年 | 评级 AA+</p>
+                  <p class="text-sm text-gray-500 mt-1">优先级 | 期限 1.5年 | 评级 AAA</p>
                 </div>
                 <span class="bg-blue-100 text-blue-800 text-xs px-2 py-0.5 rounded-full">发行中</span>
               </div>
@@ -1474,8 +1495,7 @@
   <!-- 页脚 -->
   <footer class="bg-white border-t border-gray-200 mt-8 py-6">
     <div class="container mx-auto px-4 text-center text-gray-500 text-sm">
-      <p>© 2025 新能源综合管理平台</p>
-      <p class="mt-1">总装机容量: 6000kW | 年预期收益: ¥6,564,337.43 | 资产估值: ¥21,000,000</p>
+      <p>© 2025 产品综合运行演示平台</p>
     </div>
   </footer>
 
@@ -1735,7 +1755,7 @@
           labels: forecastData.labels,
           datasets: [
             {
-              label: '预测发电量 (MW)',
+              label: '预测发电量 (kWh)',
               data: forecastData.forecastData,
               borderColor: '#165DFF',
               backgroundColor: 'rgba(22, 93, 255, 0.05)',
@@ -1744,7 +1764,7 @@
               fill: true
             },
             {
-              label: '实际发电量 (MW)',
+              label: '实际发电量 (kWh)',
               data: forecastData.actualData,
               borderColor: '#E5E7EB',
               borderWidth: 2,
@@ -1768,10 +1788,16 @@
           responsive: true,
           maintainAspectRatio: false,
           scales: {
-            y: { title: { display: true, text: '发电量 (MW)' } },
-            y1: { position: 'right', title: { display: true, text: '温度影响' }, grid: { display: false } }
+            y: { 
+              title: { display: true, text: '发电量 (kWh)' } 
+            },
+            y1: { 
+              position: 'right', 
+              title: { display: true, text: '温度影响' }, 
+              grid: { display: false } 
           }
         }
+      }
       });
       
       // 误差分析图表
@@ -1783,7 +1809,7 @@
         data: {
           labels: errorData.categories,
           datasets: [{
-            label: '平均预测误差 (kW)',
+            label: '平均预测误差 (kWh)',
             data: errorData.errors,
             backgroundColor: errorData.errors.map(v => 
               v < 3 ? 'rgba(54, 207, 201, 0.7)' : v < 6 ? 'rgba(22, 93, 255, 0.7)' : 'rgba(255, 125, 0, 0.7)'
@@ -1792,10 +1818,31 @@
           }]
         },
         options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          scales: { y: { beginAtZero: true, title: { display: true, text: '误差 (MW)' } } }
-        }
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: { 
+              y: { 
+                beginAtZero: true, 
+                title: { 
+                  display: true,
+                   text: '误差 (kWh)' 
+                },
+                max: 25, // 根据最大误差值调整Y轴范围
+                ticks: {
+                  stepSize: 5
+                }
+              } 
+            },
+            plugins: {
+              tooltip: {
+              callbacks: {
+                label: function(context) {
+                    return `平均预测误差: ${context.parsed.y}kWh`;
+                  }
+                } 
+              }
+            }
+          }
       });
       
       // 气象因素影响图表
@@ -1822,74 +1869,158 @@
               suggestedMin: 0, 
               suggestedMax: 100,
               ticks: {
-                stepSize: 10, // 设置刻度间隔为10
-                count: 11     // 设置刻度数量为11个（0,10,20,...,100）
-        },
+                stepSize: 20, 
+                count:   6 ,
+                font:{
+                  size:10
+                },
+              },
+              backdropColor: 'rgba(255, 255, 255, 0.8)',
         angleLines: {
-          display: true
+          display: true,
+          color: 'rgba(0, 0, 0, 0.1)'
         },
         grid: {
-          circular: true
+          circular: true,
+          color: 'rgba(0, 0, 0, 0.1)'
         } } }
         }
       });
     }
     
     function refreshForecastCharts() {
-      if (!appState.charts.forecastMainChart) return;
-      
-      // 更新主预测图表
-      const newForecastData = generateForecastData(7);
-      appState.charts.forecastMainChart.data.labels = newForecastData.labels;
-      appState.charts.forecastMainChart.data.datasets[0].data = newForecastData.forecastData;
-      appState.charts.forecastMainChart.data.datasets[1].data = newForecastData.actualData;
-      appState.charts.forecastMainChart.data.datasets[2].data = newForecastData.temperatureData;
-      appState.charts.forecastMainChart.update();
-    }
+  if (!appState.charts.forecastMainChart) return;
+  
+  // 更新主预测图表 - 减小波动幅度
+  const currentData = appState.charts.forecastMainChart.data;
+  
+  // 对预测数据进行微小调整（±3%波动）
+  const newForecastData = currentData.datasets[0].data.map(value => {
+    if (value === 0) return 0;
+    const fluctuation = 1 + (Math.random() * 0.06 - 0.03); // ±3%浮动
+    return Math.max(0, Math.round(value * fluctuation * 100) / 100);
+  });
+  
+  // 对实际数据进行微小调整（±2%波动）
+  const newActualData = currentData.datasets[1].data.map(value => {
+    if (value === 0) return 0;
+    const fluctuation = 1 + (Math.random() * 0.04 - 0.02); // ±2%浮动
+    return Math.max(0, Math.round(value * fluctuation * 100) / 100);
+  });
+  
+  // 对温度数据进行微小调整（±1°C波动）
+  const newTemperatureData = currentData.datasets[2].data.map(value => {
+    return Math.round((value + (Math.random() * 2 - 1)) * 10) / 10;
+  });
+  
+  currentData.datasets[0].data = newForecastData;
+  currentData.datasets[1].data = newActualData;
+  currentData.datasets[2].data = newTemperatureData;
+  appState.charts.forecastMainChart.update();
+}
     
-    // 生成预测数据
-    function generateForecastData(days = 7) {
-      const hoursPerDay = 24;
-      const totalPoints = days * hoursPerDay;
-      const labels = [];
-      const forecastData = [];
-      const actualData = [];
-      const temperatureData = [];
+// 生成预测数据
+function generateForecastData(days = 7) {
+  // 10月27日实际发电量数据 (kWh) - 作为基准日
+  const baseDayData = [
+    10.50, 10.50, 10.50, 10.50, 10.50,10.50, 
+    101.79, 127.68, 283.04, 1553.63, 1701.84, 3017.98,
+    2796.53, 2019.71, 1657.20, 1421.45, 1001.84, 683.96,
+    258.94, 207.15, 103.58, 7.50, 7.50, 7.50
+  ];
+  
+  const labels = [];
+  const forecastData = [];
+  const actualData = [];
+  const temperatureData = [];
+  
+  const startDate = new Date('2025-10-27');
+  
+  // 生成7天数据
+  for (let day = 0; day < days; day++) {
+    const currentDate = new Date(startDate);
+    currentDate.setDate(startDate.getDate() + day);
+    
+    // 根据日期生成天气影响因子（周末可能略有不同）
+    const isWeekend = currentDate.getDay() === 0 || currentDate.getDay() === 6;
+    const weatherFactor = isWeekend ? 0.98 : 1.0; // 周末发电量略低
+    
+    // 每日的随机波动因子
+    const dailyFluctuation = 1 + (Math.random() * 0.1 - 0.05); // ±5%日间波动
+    
+    for (let hour = 0; hour < 24; hour++) {
+      const baseValue = baseDayData[hour];
       
-      for (let i = 0; i < totalPoints; i++) {
-        const date = new Date();
-        date.setHours(date.getHours() - 24 + i);
-        labels.push(`${date.getDate()}日 ${date.getHours()}:00`);
-        
-        const hour = i % 24;
-        let baseValue = 50 + Math.sin((hour + 6) / 24 * Math.PI * 2) * 30;
-        const randomFactor = (Math.random() - 0.5) * 15;
-        const dayFactor = Math.sin(i / totalPoints * Math.PI) * 10;
-        
-        const forecastValue = baseValue + randomFactor + dayFactor;
-        forecastData.push(Math.max(0, Math.round(forecastValue * 10) / 10));
-        
-        const actualValue = forecastValue + (Math.random() - 0.5) * 8;
-        actualData.push(Math.max(0, Math.round(actualValue * 10) / 10));
-        
-        const tempValue = 20 + Math.sin((hour - 12) / 24 * Math.PI * 2) * 8 + (Math.random() - 0.5) * 4;
-        temperatureData.push(Math.round(tempValue * 10) / 10 * 2);
+      // 生成时间标签
+      const dateStr = `${currentDate.getMonth() + 1}月${currentDate.getDate()}日 ${hour}:00`;
+      labels.push(dateStr);
+      
+      // 生成实际数据（考虑天气和日期影响）
+      let actualValue = 0;
+      if (baseValue > 0) {
+        // 实际数据在基准值基础上加入随机波动和天气影响
+        const hourFluctuation = 1 + (Math.random() * 0.08 - 0.04); // ±4%小时波动
+        actualValue = baseValue * weatherFactor * dailyFluctuation * hourFluctuation;
       }
+      actualData.push(Math.max(0, Math.round(actualValue * 100) / 100));
       
-      return { labels, forecastData, actualData, temperatureData };
+      // 生成预测数据（在实际数据基础上±10%浮动）
+      let forecastValue = 0;
+      if (actualValue > 0) {
+        const basePrediction = actualValue * 0.8; // 先扣除20%
+        const predictionFluctuation = 1 + (Math.random() * 0.2); // 20%预测浮动
+        forecastValue = basePrediction * predictionFluctuation;
+      }
+      forecastData.push(Math.max(0, Math.round(forecastValue * 100) / 100));
+      
+      // 生成温度影响因子（与发电量趋势相关）
+      const baseTemp = 18 + (Math.random() - 0.5) * 4; // 10月基础温度18°C左右
+      const tempFactor = actualValue > 0 ? (actualValue / 3000) * 8 : 0;
+      const tempValue = baseTemp + tempFactor + (Math.random() - 0.5) * 3;
+      temperatureData.push(Math.round(tempValue * 10) / 10);
     }
+  }
+  
+  return { 
+    labels, 
+    forecastData, 
+    actualData, 
+    temperatureData 
+  };
+}
+      
     
     // 生成误差数据
-    function generateErrorData() {
-      const categories = ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00'];
-      const errors = categories.map(() => Math.round(Math.random() * 5 + 1) / 10 * 10);
-      return { categories, errors };
-    }
+    // 生成误差数据 - 基于总误差120kWh合理分配
+function generateErrorData() {
+  const categories = [
+    '00:00-02:00', '02:00-04:00', '04:00-06:00', '06:00-08:00',
+    '08:00-10:00', '10:00-12:00', '12:00-14:00', '14:00-16:00',
+    '16:00-18:00', '18:00-20:00', '20:00-22:00', '22:00-24:00'
+  ];
+  
+  // 基于发电量模式分配误差：高峰时段误差较大，夜间误差较小
+  const errorWeights = [0.02, 0.02, 0.02, 0.05, 0.08, 0.15, 0.18, 0.15, 0.12, 0.08, 0.02, 0.01];
+  const totalError = 120; // 总误差120kWh
+  
+  const errors = errorWeights.map(weight => {
+    const baseError = totalError * weight;
+    // 加入小范围随机波动 (±10%)
+    const fluctuation = 1 + (Math.random() * 0.2 - 0.1);
+    return Math.round(baseError * fluctuation * 10) / 10;
+  });
+  
+  // 确保总误差接近120kWh
+  const actualTotal = errors.reduce((sum, error) => sum +error, 0);
+  console.log(`总误差: ${actualTotal}kWh`);
+  
+  return { categories, errors };
+}
     
     // 生成影响因素数据
     function generateInfluenceFactors() {
-      const factors = ['太阳光照强度', '温度', '湿度', '气压', '日照时长', '降水概率'];
-      const influence = [46, 24, 15, 8, 5, 2]
+      const factors = ['太阳光照强度', '日照时长', '温度', '湿度', '降水概率', '气压'];
+      const influence = [45,25,15,8,5,2]
       return { factors, influence };
     }
 
@@ -1902,10 +2033,10 @@
       appState.charts.revenueTrendChart = new Chart(trendCtx, {
         type: 'line',
         data: {
-          labels: trendData.months,
+          labels: trendData.years,
           datasets: [
             {
-              label: '总收益',
+              label: '摊销前利润',
               data: trendData.totalRevenue,
               borderColor: '#165DFF',
               backgroundColor: 'rgba(22, 93, 255, 0.05)',
@@ -1914,7 +2045,7 @@
               fill: true
             },
             {
-              label: '基础售电',
+              label: '年摊销额',
               data: trendData.powerSales,
               borderColor: '#36CFC9',
               borderWidth: 1.5,
@@ -1922,7 +2053,7 @@
               fill: false
             },
             {
-              label: '峰谷套利',
+              label: '年度维护费用',
               data: trendData.peakValley,
               borderColor: '#FF7D00',
               borderWidth: 1.5,
@@ -1930,7 +2061,7 @@
               fill: false
             },
             {
-              label: '绿证与碳配额',
+              label: '净利润',
               data: trendData.greenCert,
               borderColor: '#52C41A',
               borderWidth: 1.5,
@@ -1940,95 +2071,176 @@
           ]
         },
         options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          scales: { y: { title: { display: true, text: '金额 (元)' } } }
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: { 
+      y: { 
+        title: { display: true, text: '金额 (万元)' },ticks: {
+          callback: function(value) {
+            // 格式化Y轴标签，显示为万元
+            return (value / 10000).toFixed(0);
+          }
         }
-      });
+      },
+      x: {
+        ticks: {
+            autoSkip: false, 
+            maxRotation: 45, 
+            minRotation: 45
+          }
+      }
+    },
+    plugins: {
+      tooltip: {
+        callbacks: {
+          label: function(context) {
+            return context.dataset.label + ': ¥' + context.parsed.y.toLocaleString();
+          }
+        }
+      }
     }
+  }
+    });
       // 峰谷套利图表
       const peakCtx = document.getElementById('revenue-peak-valley-chart').getContext('2d');
       const peakData = generatePeakValleyData();
       
       appState.charts.revenuePeakValleyChart = new Chart(peakCtx, {
-        type: 'bar',
-        data: {
-          labels: peakData.hours,
+          type: 'bar',
+          data: {
+          labels: ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00', '24:00'],
           datasets: [
             {
               label: '实际发电量 (MW)',
-              data: peakData.generation,
-              backgroundColor: 'rgba(134, 144, 156, 0.2)',
-              borderColor: 'rgba(134, 144, 156, 0.8)',
-              yAxisID: 'y'
+              data: [40, 30, 50, 65, 55, 70, 45],
+              backgroundColor: 'rgba(224, 224, 224, 0.8)',
+              yAxisID: 'y',
+              borderWidth: 0,
+              borderRadius: 4,
+              order: 1
             },
             {
               label: '优化上网电量 (MW)',
-              data: peakData.optimized,
-              backgroundColor: 'rgba(22, 93, 255, 0.6)',
-              borderColor: 'rgba(22, 93, 255, 1)',
-              yAxisID: 'y'
+              data: [35, 25, 48, 60, 52, 68, 40],
+              backgroundColor: 'rgba(22, 93, 255, 0.8)',
+              yAxisID: 'y',
+              borderWidth: 0,
+              borderRadius: 4,
+              order: 2
             },
             {
               label: '电价 (元/kWh)',
-              data: peakData.prices,
+              data: [0.30, 0.28, 0.45, 0.55, 0.50, 0.75, 0.40],
               type: 'line',
+              yAxisID: 'y1',
               borderColor: '#FF7D00',
-              backgroundColor: 'transparent',
-              yAxisID: 'y1'
-            }
-          ]
-        },
-        options: {
+              backgroundColor: '#FF7D00',
+              tension: 0.3,
+              fill: false,
+              borderWidth: 2.5,
+              pointRadius: 4,
+              pointHoverRadius: 6,
+              order: 999, 
+              elements: {
+                line: { z: 1000 },   
+                point: { z: 1001 }   
+              }
+            }        
+        ]
+      },
+      options: {
           responsive: true,
           maintainAspectRatio: false,
           scales: {
-            y: { title: { display: true, text: '电量 (MW)' } },
-            y1: { position: 'right', title: { display: true, text: '电价 (元/kWh)' }, grid: { display: false } }
+            y: {
+              beginAtZero: true,
+              max: 80,
+              title: { display: true, text: '电量 (MW)' }
+            },
+            y1: {
+              beginAtZero: true,
+              max: 1.0,
+              position: 'right',
+              title: { display: true, text: '电价 (元/kWh)' },
+              grid: { drawOnChartArea: false }
+            }
+          },
+          plugins: {
+            legend: { position: 'top' },
+            tooltip: {
+              callbacks: {
+                label: function(context) {
+                  const label = context.dataset.label || '';
+                  const value = context.parsed.y;
+                  if (label.includes('电价')) {
+                    return `${label}: ${value.toFixed(2)} 元/kWh`;
+                  } else {
+                    return `${label}: ${value} MW`;
+                  }
+                }
+              }
+            }
           }
         }
       });
+    }  
     function refreshRevenueCharts() {
-      if (!appState.charts.revenueTrendChart) return;
-      
-      // 更新收益趋势图表
-      const newTrendData = generateRevenueTrendData();
-      appState.charts.revenueTrendChart.data.datasets[0].data = newTrendData.totalRevenue;
-      appState.charts.revenueTrendChart.data.datasets[1].data = newTrendData.powerSales;
-      appState.charts.revenueTrendChart.data.datasets[2].data = newTrendData.peakValley;
-      appState.charts.revenueTrendChart.data.datasets[3].data = newTrendData.greenCert;
-      appState.charts.revenueTrendChart.update();
-    }
+        if (!appState.charts.revenueTrendChart) return;
+  
+        // 更新收益趋势图表 - 基于24年数据微小波动
+        const currentData = appState.charts.revenueTrendChart.data;
+  
+        currentData.datasets.forEach(dataset => {
+          dataset.data = dataset.data.map(value => {
+            const fluctuation = 1 + (Math.random() * 0.02 - 0.01); // ±1%微小波动
+            return Math.round(value * fluctuation);
+          });
+    });
+    appState.charts.revenueTrendChart.update();
+  }
     
-    // 生成收益趋势数据
-    function generateRevenueTrendData() {
-      const months = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'];
-      const baseRevenue = 6000000;
-      const totalRevenue = [];
-      const powerSales = [];
-      const peakValley = [];
-      const greenCert = [];
-      
-      months.forEach((month, i) => {
-        const seasonFactor = 1 + Math.sin((i / 12) * Math.PI * 2) * 0.2;
-        const randomFactor = 1 + (Math.random() - 0.5) * 0.1;
-        const base = Math.round(baseRevenue * seasonFactor * randomFactor);
-        
-        powerSales.push(Math.round(base * 0.7));
-        peakValley.push(Math.round(base * 0.15));
-        greenCert.push(Math.round(base * 0.15));
-        totalRevenue.push(powerSales[i] + peakValley[i] + greenCert[i]);
-      });
-      
-      return { months, totalRevenue, powerSales, peakValley, greenCert };
-    }
-    
+    // 生成收益趋势数据 - 基于24年数据
+function generateRevenueTrendData() {
+  const years = Array.from({length: 24}, (_, i) => (i+1).toString() + '年');
+  
+  // 基于您提供的24年数据
+  const amortizationBeforeProfit = [
+    6564337.43, 6531515.75, 6498858.17, 6466363.88, 6434032.06, 6401861.90,
+    6369852.59, 6338003.32, 6306313.31, 6274781.74, 6243407.83, 6212190.79,
+    6181129.84, 6150224.19, 6119473.07, 6088875.70, 6058431.32, 6028139.17,
+    5997998.47, 5968008.48, 5938168.44, 5908477.60, 5878935.21, 5849540.53
+  ];
+  
+  const annualAmortization = Array(24).fill(840000.00);
+  
+  const annualMaintenance = [
+    248000.00, 255440.00, 263103.20, 270996.30, 279126.18, 287499.97,
+    296124.97, 305008.72, 314158.98, 323583.75, 333291.26, 343290.00,
+    353588.70, 364196.36, 375122.25, 386375.92, 397967.20, 409906.21,
+    422203.40, 434869.50, 447915.59, 461353.05, 475193.65, 489449.45
+  ];
+  
+  const netProfit = [
+    5476337.43, 5436075.75, 5395754.97, 5355367.58, 5314905.87, 5274361.93,
+    5233727.62, 5192994.60, 5152154.33, 5111197.99, 5070116.57, 5028900.79,
+    4987541.14, 4946027.83, 4904350.82, 4862499.78, 4820464.13, 4778232.96,
+    4735795.07, 4693138.98, 4650252.85, 4607124.54, 4563741.56, 4520091.08
+  ];
+  
+  return { 
+    years, 
+    totalRevenue: amortizationBeforeProfit,
+    powerSales: annualAmortization,
+    peakValley: annualMaintenance,
+    greenCert: netProfit
+  };
+}
     // 生成峰谷套利数据
     function generatePeakValleyData() {
       const hours = ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00', '24:00'];
-      const prices = [0.35, 0.32, 0.58, 0.65, 0.52, 0.72, 0.35];
-      const generation = [45, 48, 62, 55, 70, 65, 45];
-      const optimized = [65, 70, 30, 25, 60, 40, 65];
+      const prices = [0.30, 0.28, 0.45, 0.55, 0.50, 0.75, 0.40];
+      const generation = [40, 30, 50, 65, 55, 70, 45];
+      const optimized = [35, 25, 48, 60, 52, 68, 40];
       return { hours, prices, generation, optimized };
     }
     
@@ -2088,14 +2300,15 @@
       appState.charts.rwaRevenueDistributionChart = new Chart(distributionCtx, {
         type: 'doughnut',
         data: {
-          labels: ['优先级收益', '次级收益', '管理费用', '风险准备金'],
+          labels: ['建设成本摊销', '维护费用', '优先级收益', '次级收益','风险准备金'],
           datasets: [{
-            data: [65, 20, 10, 5],
+            data: [12.80, 3.78, 54.39, 24.03, 5.00],
             backgroundColor: [
-              'rgba(34, 197, 94, 0.7)',
-              'rgba(22, 93, 255, 0.7)',
-              'rgba(134, 144, 156, 0.7)',
-              'rgba(245, 158, 11, 0.7)'
+                'rgba(245, 158, 11, 0.7)',    // 建设成本摊销 - 琥珀色
+                'rgba(22, 93, 255, 0.7)',     // 维护费用 - 蓝色
+                'rgba(34, 197, 94, 0.7)',     // 优先级收益 - 绿色
+                'rgba(156, 39, 176, 0.7)',    // 次级收益 - 紫色
+                'rgba(239, 68, 68, 0.7)'      // 风险准备金 - 红色
             ],
             borderWidth: 0
           }]
@@ -2103,37 +2316,75 @@
         options: {
           responsive: true,
           maintainAspectRatio: false,
-          cutout: '70%'
+          cutout: '70%',
+        plugins: {
+            tooltip: {
+                callbacks: {
+                    label: function(context) {
+                        return context.label + ': ' + context.parsed.toFixed(2) + '%';
+                    }
+                }
+            }
         }
+      }
       });
       
       // 未来收益图表
       const futureCtx = document.getElementById('rwa-future-revenue-chart').getContext('2d');
+      const netProfit = [
+    5476337.43, 5436075.75, 5395754.97, 5355367.58, 5314905.87, 5274361.93,
+    5233727.62, 5192994.60, 5152154.33, 5111197.99, 5070116.57, 5028900.79,
+    4987541.14, 4946027.83, 4904350.82, 4862499.78, 4820464.13, 4778232.96,
+    4735795.07, 4693138.98, 4650252.85, 4607124.54, 4563741.56, 4520091.08
+    ];
+
+  const years = Array.from({ length: 24 }, (_, i) => (i + 1).toString() + '年');
       appState.charts.rwaFutureRevenueChart = new Chart(futureCtx, {
-        type: 'bar',
-        data: {
-          labels: ['Q1', 'Q2', 'Q3', 'Q4', 'Q1', 'Q2', 'Q3', 'Q4', 'Q1', 'Q2', 'Q3', 'Q4'],
-          datasets: [{
-            label: '2023年预期收益 (万元)',
-            data: [152, 168, 175, 160, 0, 0, 0, 0, 0, 0, 0, 0],
-            backgroundColor: 'rgba(22, 93, 255, 0.7)'
-          }, {
-            label: '2024年预期收益 (万元)',
-            data: [0, 0, 0, 0, 165, 178, 185, 170, 0, 0, 0, 0],
-            backgroundColor: 'rgba(54, 207, 201, 0.7)'
-          }, {
-            label: '2025年预期收益 (万元)',
-            data: [0, 0, 0, 0, 0, 0, 0, 0, 175, 188, 195, 180],
-            backgroundColor: 'rgba(34, 197, 94, 0.7)'
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          scales: { y: { title: { display: true, text: '收益 (万元)' } } }
+        type: 'line',
+    data: {
+      labels: years,
+      datasets: [
+        {
+          label: '净利润',
+          data: netProfit.map(v => v / 10000), // 转换为万元
+          borderColor: '#165DFF',
+          backgroundColor: 'rgba(22, 93, 255, 0.15)',
+          fill: true,
+          tension: 0.35,
+          borderWidth: 2.5,
+          pointRadius: 3,
+          pointHoverRadius: 5
         }
-      });
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false }, 
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              return `预期收益：${context.parsed.y.toFixed(2)} 万元`;
+            }
+          }
+        }
+      },
+      scales: {
+        x: {
+          title: { display: true, text: '年份' },
+          ticks: { maxTicksLimit: 24 }
+        },
+        y: {
+          title: { display: true, text: '预期收益 (万元)' },
+          beginAtZero: false,
+          suggestedMin: 440,
+          suggestedMax: 560
+        }
+      }
     }
+  });
+}
     
     function refreshRwaCharts() {
       if (!appState.charts.rwaTokenizationTrendChart) return;
@@ -2147,7 +2398,7 @@
     
     // 生成代币化趋势数据
     function generateTokenizationTrendData() {
-      const months = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'];
+      const months = ['2022 Q4', '2023 Q1', '2023 Q2', '2023 Q3', '2023 Q4', '2024 Q1', '2024 Q2', '2024 Q3', '2024 Q4', '2025 Q1', '2025 Q2', '2025 Q3'];
       const tokenizedAssets = [];
       const nftCount = [];
       
@@ -2169,63 +2420,137 @@
     function initAbsCharts() {
       // 发行趋势图表
       const trendCtx = document.getElementById('abs-issuance-trend-chart').getContext('2d');
-      const trendData = generateAbsIssuanceTrendData();
+      const years = ['2016','2017','2018','2019','2020','2021','2022','2023','2024','2025'];
+
+      const greenABN = [88, 157, 225, 652, 559, 684, 926, 729, 621, 563];
+      const greenABS = [42, 94, 138, 387, 331, 325, 193, 312, 224, 223];
+      const greenCorpABS = [35, 69, 83, 254, 226, 218, 517, 985, 928, 797];
+      const total = [165, 320, 446, 1293, 1116, 1227, 1636, 2026, 1773, 1583];
+      const issues = [5, 12, 18, 55, 45, 105, 135, 148, 152, 125];
       
       appState.charts.absIssuanceTrendChart = new Chart(trendCtx, {
         type: 'bar',
-        data: {
-          labels: trendData.quarters,
-          datasets: [
-            {
-              label: '发行规模 (亿元)',
-              data: trendData.issuanceVolume.map(v => v / 100000000),
-              backgroundColor: 'rgba(34, 197, 94, 0.7)',
-              borderColor: 'rgba(34, 197, 94, 1)',
-              yAxisID: 'y'
-            },
-            {
-              label: '产品数量',
-              data: trendData.productCount,
-              backgroundColor: 'transparent',
-              borderColor: '#165DFF',
-              borderWidth: 2,
-              type: 'line',
-              tension: 0.4,
-              yAxisID: 'y1'
-            }
-          ]
+    data: {
+      labels: years,
+      datasets: [
+        {
+          label: '绿色ABN',
+          data: greenABN,
+          backgroundColor: 'rgba(46, 134, 193, 0.8)',  // 蓝绿色
+          stack: 'stack1',
+          yAxisID: 'y'
         },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          scales: {
-            y: { title: { display: true, text: '发行规模 (亿元)' } },
-            y1: { position: 'right', title: { display: true, text: '产品数量' }, grid: { display: false } }
+        {
+          label: '绿色信贷ABS',
+          data: greenABS,
+          backgroundColor: 'rgba(255, 167, 38, 0.8)',  // 橙黄色
+          stack: 'stack1',
+          yAxisID: 'y'
+        },
+        {
+          label: '绿色企业ABS',
+          data: greenCorpABS,
+          backgroundColor: 'rgba(156, 39, 176, 0.8)',  // 紫色
+          stack: 'stack1',
+          yAxisID: 'y'
+        },
+
+        {
+          label: '发行只数（合计）',
+          data: issues,
+          type: 'line',
+          borderColor: '#22C55E',
+          backgroundColor: '#22C55E',
+          borderWidth: 2.5,
+          tension: 0.35,
+          yAxisID: 'y1',
+          pointRadius: 4,
+          pointHoverRadius: 6,
+          order: 10, 
+          elements: {
+            line: { z: 1000 },
+            point: { z: 1001 }
           }
         }
-      });
-      
+
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        tooltip: {
+          callbacks: {
+            footer: (items) => {
+              const index = items[0].dataIndex;
+              return `总规模: ${total[index]} 亿元`;
+            }
+          }
+        },
+        legend: { position: 'top' }
+      },
+      scales: {
+        x: {
+          stacked: true,
+          title: { display: true, text: '年份' }
+        },
+        y: {
+          stacked: true,
+          position: 'left',
+          title: { display: true, text: '发行规模 (亿元)' },
+          beginAtZero: true
+        },
+        y1: {
+          position: 'right',
+          title: { display: true, text: '发行只数 (合计)' },
+          grid: { drawOnChartArea: false },
+          beginAtZero: true
+        }
+      }
+    }
+  });
       // 投资人类型分布图表
       const investorCtx = document.getElementById('abs-investor-type-chart').getContext('2d');
       appState.charts.absInvestorTypeChart = new Chart(investorCtx, {
         type: 'pie',
         data: {
-          labels: ['银行', '保险公司', '基金公司', '证券公司', '个人投资者'],
+          labels: ['国有大型商业银行',
+                  '股份制商业银行',
+                  '城市商业银行',
+                  '农商行及农合行',
+                  '证券公司',
+                  '其他金融机构',
+                  '非金融机构法人'],
           datasets: [{
-            data: [45, 25, 15, 10, 5],
+            data: [48.86, 20.60, 20.86, 3.16, 4.24, 1.39, 0.88],
             backgroundColor: [
-              'rgba(22, 93, 255, 0.7)',
-              'rgba(34, 197, 94, 0.7)',
-              'rgba(156, 39, 176, 0.7)',
-              'rgba(245, 158, 11, 0.7)',
-              'rgba(134, 144, 156, 0.7)'
+              '#165DFF', // 蓝
+              '#36CFC9', // 青
+              '#52C41A', // 绿
+              '#FF7D00', // 橙
+              '#FADB14', // 黄
+              '#722ED1', // 紫
+              '#EB2F96'  // 粉
             ],
             borderWidth: 0
           }]
         },
         options: {
           responsive: true,
-          maintainAspectRatio: false
+          maintainAspectRatio: false,
+          plugins: {
+            tooltip: {
+                callbacks: {
+                    label: function(context) {
+                        return `${context.label}: ${context.parsed.toFixed(2)}%`;
+                    }
+                }
+             },
+          legend: {
+            position: 'right'
+          }
+          }
         }
       });
       
@@ -2261,70 +2586,76 @@
         }
       });
       
-      // 认购趋势图表
-      const subTrendCtx = document.getElementById('abs-subscription-trend-chart').getContext('2d');
-      appState.charts.absSubscriptionTrendChart = new Chart(subTrendCtx, {
-        type: 'line',
-        data: {
-          labels: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
-          datasets: [{
-            label: '月度认购金额 (亿元)',
-            data: [2.1, 2.3, 2.4, 2.5, 2.7, 2.8, 3.2, 3.6, 4.0, 4.2, 4.4, 4.6],
-            borderColor: '#22C55E',
-            backgroundColor: 'rgba(34, 197, 94, 0.1)',
-            tension: 0.7,
-            fill: true
-          }]
+      // 认购趋势图表（改为年度绿色ABS发行总规模）
+const subTrendCtx = document.getElementById('abs-subscription-trend-chart').getContext('2d');
+appState.charts.absSubscriptionTrendChart = new Chart(subTrendCtx, {
+  type: 'line',
+  data: {
+    // 修改为 2016 - 2025 年
+    labels: ['2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025'],
+    datasets: [{
+      label: '年度绿色ABS认购金额 (亿元)',
+      // 使用你提供的总规模数据
+      data: [165, 320, 446, 1293, 1116, 1227, 1636, 2026, 1773, 1583],
+      borderColor: '#16A34A', // 深绿色线条
+      backgroundColor: 'rgba(22, 163, 74, 0.15)', // 透明绿色区域
+      borderWidth: 3,
+      pointBackgroundColor: '#16A34A',
+      pointRadius: 5,
+      tension: 0.4,
+      fill: true
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: { 
+      x: {
+        title: { display: true, text: '年份' },
+        ticks: {
+          // 确保所有年份都显示
+          autoSkip: false,
+          maxRotation: 0,
+          minRotation: 0
+        }
+      },
+      y: { 
+        title: { display: true, text: '发行总规模 (亿元)' },
+        min: 0,
+        max: 2200, // 根据数据范围调整
+        ticks: {
+          stepSize: 200
         },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          scales: { 
-            y: { 
-              title: { 
-                display: true, 
-                text: '认购金额 (亿元)' 
-              } ,
-              min: 1.5,
-              max: 5.5,
-              ticks: {
-                stepSize: 0.5
-              } 
-            } 
+        grid: { color: '#eee' }
+      }
+    },
+    plugins: {
+      legend: {
+        display: true,
+        labels: {
+          color: '#333',
+          font: { size: 13 }
+        }
+      },
+      tooltip: {
+        callbacks: {
+          label: function(context) {
+            return '发行总规模: ' + context.parsed.y + ' 亿元';
           }
         }
-      });
+      }
     }
-    
+  }
+});
+    }
     function refreshAbsCharts() {
       if (!appState.charts.absIssuanceTrendChart) return;
-      
       // 更新发行趋势图表
-      const newTrendData = generateAbsIssuanceTrendData();
       appState.charts.absIssuanceTrendChart.data.datasets[0].data = newTrendData.issuanceVolume.map(v => v / 100000000);
       appState.charts.absIssuanceTrendChart.data.datasets[1].data = newTrendData.productCount;
       appState.charts.absIssuanceTrendChart.update();
     }
     
-    // 生成ABS发行趋势数据
-    function generateAbsIssuanceTrendData() {
-      const quarters = ['Q4 2023', 'Q1 2024', 'Q2 2024', 'Q3 2024', 'Q4 2024', 'Q1 2025', 'Q2 2025', 'Q3 2025'];
-      const issuanceVolume = [];
-      const productCount = [];
-      
-      let baseVolume = 30000000;
-      let baseCount = 1;
-      
-      quarters.forEach(() => {
-        baseVolume = baseVolume * (1 + 0.15 + (Math.random() - 0.5) * 0.08);
-        issuanceVolume.push(Math.round(baseVolume));
-        
-        baseCount = baseCount + 0.3 + Math.random() * 0.5;
-        productCount.push(Math.round(baseCount));
-      });
-      
-      return { quarters, issuanceVolume, productCount };
-    }
 
     // 模拟产品认购进度更新
     function simulateSubscriptionProgress() {
@@ -2390,5 +2721,6 @@
       setInterval(simulateSubscriptionProgress, 30000);
     });
   </script>
+
 </body>
 </html>
