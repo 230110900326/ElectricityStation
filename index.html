@@ -2271,15 +2271,18 @@ function generateRevenueTrendData() {
       labels: years,
       datasets: [
         {
-          label: '净利润',
+          label: '预期收益',
           data: netProfit.map(v => v / 10000), // 转换为万元
           borderColor: '#165DFF',
           backgroundColor: 'rgba(22, 93, 255, 0.15)',
           fill: true,
           tension: 0.35,
-          borderWidth: 2.5,
-          pointRadius: 3,
-          pointHoverRadius: 5
+          borderWidth: 3,
+          pointRadius: 4,
+          pointHoverRadius: 5,
+          pointBackgroundColor: '#165DFF',
+          pointBorderColor: '#165DFF',
+          pointBorderWidth: 0
         }
       ]
     },
@@ -2287,12 +2290,11 @@ function generateRevenueTrendData() {
       responsive: true,
       maintainAspectRatio: false,
       plugins: {
-        legend: { display: false }, 
+        legend: { display: true }, 
         tooltip: {
-          callbacks: {
-            label: function(context) {
-              return `预期收益：${context.parsed.y.toFixed(2)} 万元`;
-            }
+          maxTicksLimit: 12,
+          callback: function(value, index) {
+            return (index % 2 === 0) ? this.getLabelForValue(value) : '';
           }
         }
       },
@@ -2304,8 +2306,11 @@ function generateRevenueTrendData() {
         y: {
           title: { display: true, text: '预期收益 (万元)' },
           beginAtZero: false,
-          suggestedMin: 440,
-          suggestedMax: 560
+          suggestedMin: 0,
+          suggestedMax: 560,
+          ticks:{
+            stepSize: 50
+          }
         }
       }
     }
